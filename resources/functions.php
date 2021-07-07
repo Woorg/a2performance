@@ -117,9 +117,9 @@ function get_block_template($template, $args)
     Add attributes to script tags
  */
 
-add_filter('script_loader_tag', 'snob_script_loader_tag', 10, 2);
+add_filter('script_loader_tag', 'chickenfish_script_loader_tag', 10, 2);
 
-function snob_script_loader_tag($tag, $handle)
+function chickenfish_script_loader_tag($tag, $handle)
 {
 
     // Добавляем атрибут async к зарегистрированному скрипту.
@@ -201,31 +201,31 @@ function fix_svg_mime_type($data, $file, $filename, $mimes, $real_mime = '')
     Change nav item class
  */
 
-function snob_add_additional_class_on_li($classes, $item, $args)
+function chickenfish_add_additional_class_on_li($classes, $item, $args)
 {
     $classes[] = 'nav__item';
     return $classes;
 }
 
-add_filter('nav_menu_css_class', 'snob_add_additional_class_on_li', 1, 3);
+add_filter('nav_menu_css_class', 'chickenfish_add_additional_class_on_li', 1, 3);
 
 
 /**
     Change nav link class
  */
 
-function snob_filter_nav_menu_link_attributes($atts, $item, $args, $depth)
+function chickenfish_filter_nav_menu_link_attributes($atts, $item, $args, $depth)
 {
 
     $atts['class'] = 'nav__link';
     return $atts;
 }
 
-add_filter('nav_menu_link_attributes', 'snob_filter_nav_menu_link_attributes', 10, 4);
+add_filter('nav_menu_link_attributes', 'chickenfish_filter_nav_menu_link_attributes', 10, 4);
 
 
 /**
- * Return svg sprite path
+ * Return images path
  * @return string
  */
 
@@ -236,22 +236,16 @@ function images_path()
 }
 
 
-// Pre get posts archive
+/**
+ * Return svg path
+ * @return string
+ */
 
-// add_action('pre_get_posts', 'snob_adjust_queries');
-
-// function snob_adjust_queries($query)
-// {
-
-//     if (is_archive() && $query->is_main_query() && !is_admin() ) {
-
-//         $query->set('posts_per_page', 6);
-//         $query->set('orderby', 'id');
-//         $query->set('order', 'ASC');
-//     }
-
-
-// }
+function svg_path()
+{
+    $images_path = get_template_directory_uri() . '/front/static/prod/';
+    return $images_path;
+}
 
 
 /**
@@ -275,59 +269,16 @@ function random()
 
 function app_path()
 {
-    $app_path = get_theme_root_uri() . '/snob/app';
+    $app_path = get_theme_root_uri() . '/chickenfish/app';
     return $app_path;
 }
 
 
+/**
+ * Excerpt more filter
+ *
+ */
 
-add_action('wp_ajax_load_reviews_by_ajax', 'load_reviews_by_ajax_callback');
-add_action('wp_ajax_nopriv_load_reviews_by_ajax', 'load_reviews_by_ajax_callback');
-
-function load_reviews_by_ajax_callback()
-{
-
-    check_ajax_referer('load_more', 'security');
-
-    $args = [
-        'post_type' => 'project',
-        'posts_per_page' => 6,
-        'orderby' => 'id',
-        'order' => 'ASC',
-    ];
-
-    $args['paged'] = $_POST['page'] + 1; // следующая страница
-    // $args['post_status'] = 'publish';
-
-
-    $query = new WP_Query($args);
-
-
-    while ($query->have_posts()) {
-        $query->the_post(); ?>
-
-        <?php
-            $project_subtitle = carbon_get_post_meta( get_the_ID(),'project_subtitle' );
-        ?>
-
-        <article class="projects__project">
-            <a class="projects__link" href="<?php the_permalink() ?>">
-                <div class="projects__image">
-                    <?php the_post_thumbnail( get_the_ID(), 'full' ) ?>
-                </div>
-                <div class="projects__entry">
-                    <!-- <div class="projects__entry-title"><?php the_title() ?></div> -->
-                    <div class="projects__entry-subtitle"><?php echo $project_subtitle ?></div>
-                </div>
-
-            </a>
-        </article>
-
-
-<?php
-    }
-
-    wp_reset_postdata();
-
-    wp_die();
-}
+add_filter('excerpt_more', function( $more ) {
+    return '...';
+});

@@ -1,38 +1,52 @@
 .title
-  color: #000000
-  +font-size(18px)
+  color: #4d4d4d
+  font-family: $m
+  font-size: 32px
   font-weight: 400
-  line-height: 1.4
-  letter-spacing: 3.51px
-  text-transform: uppercase
+  line-height: normal
+  +mq($medium)
+    +font-size(56px)
 
+
+.title_big
+  font-size: 41px
+  +mq($medium)
+    +font-size(72px)
 
 .title_secondary
+  color: #8b2bff
   font-size: 24px
-  font-weight: 600
-  text-transform: lowercase
-  letter-spacing: 0
+  +mq($medium)
+    +font-size(28px)
+
 
 .button
   +resetbutton()
-  padding-right: 22px
-  padding-left: 22px
-  height: 42px
-  background-color: #ffffff
+  border-image-slice: 9 9 9 9 fill
+  border-image-width: 10px 10px 10px 10px
+  border-image-outset: 0px 0px 0px 0px
+  border-image-repeat: round round
+  border-image-source: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTczIiBoZWlnaHQ9IjQ3IiB2aWV3Qm94PSIwIDAgMTczIDQ3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB4PSI0IiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjQiIHk9IjQ1IiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjIiIHk9IjQiIHdpZHRoPSIzOSIgaGVpZ2h0PSIyIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAyIDQpIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB3aWR0aD0iMzkiIGhlaWdodD0iMiIgdHJhbnNmb3JtPSJtYXRyaXgoNC4zNzExNGUtMDggMSAxIC00LjM3MTE0ZS0wOCAxNzEgNCkiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHRyYW5zZm9ybT0ibWF0cml4KC0xIDAgMCAxIDE3MSAyKSIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iMiIgeT0iNDMiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHRyYW5zZm9ybT0ibWF0cml4KC0xIDAgMCAxIDE3MSA0MykiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=")
+
+  padding-right: 58px
+  padding-left: 58px
+  height: 46px
+
   display: inline-flex
   justify-content: center
   align-items: center
-  color: #000
-  font-size: 18px
+  color: #fff
+  opacity: 1
+  +font-size(16px)
   font-weight: normal
   line-height: 1
   text-align: center
   text-decoration: none
-  +tr(background-color .3s linear)
+  +tr(opacity .3s ease)
 
   &:hover
-    background-color: darken(#ffffff, 10)
-    +tr(background-color .3s linear)
+    opacity: 0.8
+    +tr(opacity .3s ease)
 
 .button_secondary
   border: solid 1px #000000
@@ -40,30 +54,138 @@
   padding-left: 38px
   background-color: #ffffff
 
+.button_submit
+  height: 47px
 
+.screen-reader-text
+  +visuallyhidden()
+
+
+.pagination
+  // border-top: 2px solid #8b2aff
+  padding-top: 25px
+
+  .page-numbers
+    margin-right: 15px
+    color: #8b2aff
+
+    &:last-child
+      margin-right: 0
+
+    &.current
+      color: #000
+
+    &.next
+      +visuallyhidden()
 
 .text
   color: #000000
   font-size: 18px
   font-weight: 400
   line-height: 1.3
+  +mq($medium)
+    +font-size(20px)
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    font-family: $m
+
 
   h1
-    margin-bottom: 30px
-    font-weight: 600
+    margin-top: 44px
+    margin-bottom: 50px
+    font-size: 45px
+    +mq($medium)
+      +font-size(72px)
 
-  h2,
+
+  h2
+    margin-top: 29px
+    margin-bottom: 35px
+    font-size: 33px
+    +mq($medium)
+      margin-bottom: 27px
+      +font-size(40px)
+
   h3
-    margin-bottom: 30px
-    font-weight: 600
+    margin-top: 54px
+    margin-bottom: 23px
+    font-size: 26px
+    +mq($medium)
+      +font-size(24px)
+
 
   p
-    margin-bottom: 21px
+    margin-top: 17px
+    margin-bottom: 27px
     font-size: 18px
-    font-weight: 300
-    line-height: 1.3
+    font-weight: 400
+    line-height: 1.19
+    +mq($medium)
+      +font-size(20px)
+
     &:last-of-type
         margin-bottom: 0
 
   em
     font-style: italic
+
+
+  ul
+    font-size: 16px
+    +mq($medium)
+      max-width: 600px
+      +font-size(16px)
+    li
+      position: relative
+      margin-bottom: 24px
+      padding-left: 18px
+      &:after
+        position: absolute
+        top: 6px
+        left: 0
+        content: ''
+        width: 6px
+        height: 6px
+        background-color: #8b2aff
+      &:last-child
+        margin-bottom: 0
+
+
+  .wp-block-image
+    position: relative
+    margin-top: 24px
+    margin-bottom: 22px
+    padding-top: 3px
+    padding-right: 3px
+    padding-bottom: 3px
+    padding-left: 3px
+    display: inline-flex
+    min-height: 330px
+    font-size: 0
+    overflow: hidden
+    +mq($medium)
+      min-height: auto
+
+    &:after
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      content: ''
+      border-image-slice: 13 13 13 13 fill
+      border-image-width: 10px 10px 10px 10px
+      border-image-outset: 0px 0px 0px 0px
+      border-image-repeat: round round
+      border-image-source: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUyIiBoZWlnaHQ9IjMyNSIgdmlld0JveD0iMCAwIDc1MiAzMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjQiIHk9IjciIHdpZHRoPSIzMTAiIGhlaWdodD0iMy45OTk5OCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNCA3KSIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSI3NTIiIHk9IjciIHdpZHRoPSIzMTAiIGhlaWdodD0iMy45OTk5OCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNzUyIDcpIiBmaWxsPSIjOEIyQUZGIi8+CjxyZWN0IHg9IjgiIHdpZHRoPSI3MzYiIGhlaWdodD0iNCIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSI4IiB5PSIzMjEiIHdpZHRoPSI3MzYiIGhlaWdodD0iNCIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSIzLjkyMTg4IiB5PSIzLjkyMTg4IiB3aWR0aD0iMy45MjE5MSIgaGVpZ2h0PSIzLjkyMTkxIiBmaWxsPSIjOEIyQUZGIi8+CjxyZWN0IHg9Ijc0NC4zOTciIHk9IjMxNy4xNTYiIHdpZHRoPSIzLjkyMTkxIiBoZWlnaHQ9IjMuOTIxOTEiIGZpbGw9IiM4QjJBRkYiLz4KPHBhdGggZD0iTTMuOTIxODggMzE3LjE1Nkg3Ljg0Mzc4VjMyMS4wNzhIMy45MjE4OFYzMTcuMTU2WiIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB3aWR0aD0iMy45MjE5MSIgaGVpZ2h0PSIzLjkyMTkxIiB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSA3NDQuMzk3IDcuODQzNzUpIiBmaWxsPSIjOEIyQUZGIi8+Cjwvc3ZnPgo=")
+
+    img
+      object-fit: cover
+      height: 100%
+      +mq($medium)
+        height: auto

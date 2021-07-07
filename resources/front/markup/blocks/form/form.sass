@@ -1,57 +1,112 @@
 .form
     width: 100%
-    display: flex
-    flex-direction: column
-        // align-items: flex-end
-
-    &__field
-        margin-bottom: 23px
+    form
         display: flex
         flex-grow: 1
+        flex-wrap: wrap
+        +mq($medium)
+            flex-wrap: nowrap
+
+    &__field
+        margin-bottom: 32px
+        width: 100%
+        display: flex
+        flex-grow: 1
+        flex-shrink: 1
+
+        +mq($medium)
+            margin-bottom: 0
+            margin-right: 30px
+            width: auto
+
+        &:last-child
+            margin-bottom: 0
+
         .wpcf7-form-control-wrap
             flex-grow: 1
+
+    // &__field_submit
+    //     width: 100%
+    //     text-align: center
+    //     +mq($medium)
+    //         width: auto
 
     &__input,
     &__textarea
         +resetbutton()
-        border: 1px solid #fff
+        border-bottom: 2px solid #fff
         padding-right: 20px
         padding-left: 20px
         background-color: transparent
         width: 100%
         height: 42px
         flex-grow: 1
-        color: #FFF
-        font-family: $m
+        color: rgba(255,255,255,.7)
+        font-family: $r
+        +font-size(16px)
         font-weight: 400
-        +font-size(18px)
+        // line-height: 24px
+        line-height: 1.5
+        text-align: center
         +placeholder()
-            color: rgba(255,255,255, .3)
-            font-family: $m
-            +font-size(18px)
+            color: rgba(255,255,255,.7)
+            font-family: $r
+            +font-size(16px)
             font-weight: 400
+            // line-height: 24px
+            line-height: 1.5
+            text-align: center
+
         .wpcf7-not-valid
             border: 1px solid red
 
         .wpcf7-valid
             border: 1px solid green
 
+    &__input
+        padding-bottom: 14px
 
+    .form__textarea
+        padding-top: 9px
+        padding-bottom: 9px
+        overflow: hidden
+        resize: none
+        height: 37px
 
-    &__textarea
-        padding-top: 13px
-        padding-bottom: 13px
-        min-height: 190px
+    &__submit-w
+        text-align: center
 
-    // &__submit
+    &__submit
+        margin-right: auto
+        margin-left: auto
+        width: 100%
+        +mq($medium)
+            max-width: 270px
+
 
     .wpcf7
         .ajax-loader
+            position: absolute
+            bottom: 5px
+            left: 50%
+            margin-top: 10px
             margin-right: auto
             margin-left: auto
             display: block
+            transform: translateX(-50%)
+            // +mq($medium)
+
 
     .wpcf7
+
+        .wpcf7-not-valid-tip
+            position: absolute
+            bottom: -20px
+            left: 0
+            +mq($medium)
+                bottom: -30px
+
+
         form.invalid
             .wpcf7-response-output
                 display: none
@@ -61,6 +116,7 @@
                 background: #46b450
                 color: #fff
 
+
         .wpcf7-not-valid-tip
-            +font-size(16px)
+            +font-size(15px)
 

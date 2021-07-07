@@ -19,11 +19,14 @@ add_action('wp_enqueue_scripts', function () {
     // magnific css
     // wp_enqueue_style('magnific', get_template_directory_uri() . '/front/static/dev/assets/css/separate-css/magnific-popup.css', null);
 
+    // swiper css
+    wp_enqueue_style('swiper', get_template_directory_uri() . '/front/static/prod/assets/css/separate-css/swiper-bundle.min.css', null);
 
-    // main css dev
+
+    // MAIN CSS DEV
     wp_enqueue_style('main', get_template_directory_uri() . '/front/static/dev/assets/css/main.css', null, random());
 
-    // main css prod
+    // MAIN CSS PROD
     // wp_enqueue_style('main', get_template_directory_uri() . '/front/static/prod/assets/css/main.min.css', null);
 
     wp_enqueue_script('jquery');
@@ -32,7 +35,6 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_script_add_data('jquery-migrate', 'defer', true);
     wp_script_add_data('eio-lazy-load', 'defer', true);
-
 
     // aos js
     // wp_enqueue_script('aos', get_template_directory_uri() . '/front/static/prod/assets/js/separate-js/aos.js', null, '1.0', true);
@@ -48,48 +50,16 @@ add_action('wp_enqueue_scripts', function () {
     wp_script_add_data('contact-form-7', 'defer', true);
 
 
-    if ( is_home() || is_front_page()) {
-
-        // Yandex maps
-        wp_enqueue_script('ya-maps', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=aba0a418-e4f2-4ee8-91f5-cba95332689d', null, '1.0', true);
-
-        wp_script_add_data('ya-maps', 'defer', true);
-
-        wp_localize_script('ya-maps', 'map', [
-            'coords' => carbon_get_theme_option('yandex_map_coords')
-        ]);
-    }
-
-
-    // main js dev
+    // MAIN JS DEV
     wp_enqueue_script('main', get_template_directory_uri() . '/front/static/dev/assets/js/main.js', null, '1.0', true);
 
-    // main js prod
+    // MAIN JS PROD
     // wp_enqueue_script('main', get_template_directory_uri() . '/front/static/prod/assets/js/main.min.js', null, '1.0', true);
 
     wp_script_add_data('main', 'defer', true);
 
 
-    /**
-     * Ajax projects
-     */
 
-    // register our main script but do not enqueue it yet
-
-
-    wp_register_script('load-more', app_path() . '/inc/js/myloadmore.js', null, '1.0', true);
-
-    wp_localize_script('load-more', 'load_more_reviews', array(
-        'ajaxurl' => admin_url('admin-ajax.php'), // WordPress AJAX
-        'posts' => json_encode($query->query_vars), // everything about your loop is here
-        'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
-        'max_page' => $query->max_num_pages,
-        'security' => wp_create_nonce('load_more'),
-    ));
-
-    wp_enqueue_script('load-more');
-
-    wp_script_add_data('load-more', 'defer', true);
 }, 100);
 
 /**

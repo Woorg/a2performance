@@ -2,7 +2,25 @@ mixin hero(data)
   .hero
     .hero__container.container
       .hero__content
-        .hero__image
 
+
+        ul.hero__social.social
+          li.social__item
+            a.social__link(href="#")
+              != pugHelpers.Icon.call(locals, {iconName: 'instagram-icon', className: 'social__icon'})
+          li.social__item
+            a.social__link(href="#")
+              != pugHelpers.Icon.call(locals, {iconName: 'twitter-icon', className: 'social__icon'})
+          li.social__item
+            a.social__link(href="#")
+              != pugHelpers.Icon.call(locals, {iconName: 'fb-icon', className: 'social__icon'})
 
         .hero__text
+
+        .hero__video
+           a.hero__video-link(href="#")
+            != pugHelpers.Icon.call(locals, {iconName: 'play-icon', className: 'hero__video-icon'})
+
+
+
+

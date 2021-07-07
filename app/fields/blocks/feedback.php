@@ -6,14 +6,6 @@
         Block::make( __( 'Feedback block' ) )
             ->add_fields( array(
                 Field::make( 'text', 'title', 'Title' ),
-                Field::make( 'textarea', 'text', 'Text' )
-                    ->set_rows( 2 ),
-
-                Field::make( 'text', 'name', 'Name' ),
-                Field::make( 'text', 'position', 'Position' ),
-                Field::make( 'text', 'phone', 'Phone' ),
-                Field::make( 'text', 'email', 'Email' ),
-
                 Field::make( 'text', 'form_shortcode', 'Form shortcode' )
             ))
 

@@ -6,7 +6,7 @@ mixin header(data)
 
       nav.header__nav.nav.nav_primary
         button.nav__trigger
-
+          != pugHelpers.Icon.call(locals, {iconName: 'menu-icon', className: 'customClass'})
         .nav__list-w
 
           ul.nav__list

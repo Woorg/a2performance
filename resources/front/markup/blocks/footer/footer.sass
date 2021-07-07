@@ -1,18 +1,109 @@
 .footer
-  background-color: #000000
-  // overflow: hidden
 
   &__container
-    padding-top: 18px
-    padding-bottom: 18px
+    padding-top: 6px
+    padding-bottom: 40px
     display: flex
+    flex-direction: column
     flex-wrap: wrap
     justify-content: space-between
     align-items: center
-    color: #ffffff
+    color: #000000
     +font-size(16px)
-    +mq($small)
+
+    +mq($medium)
+      padding-top: 40px
+
+    +mq($large)
+      padding-top: 25px
+      padding-bottom: 25px
+      flex-direction: row
       flex-wrap: nowrap
 
-  // &__social
-  //   margin-left: auto
+
+  &__logo
+    margin-top: 40px
+    max-width: 335px
+    width: 100%
+    order: 2
+    +mq($large)
+      margin-top: 0
+      max-width: 252px
+      order: 0
+  &__contacts
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    order: 0
+    +mq($xsmall)
+      margin-right: 20px
+      max-width: 310px
+
+    +mq($medium)
+      margin-right: 0
+
+    +mq($large)
+      padding-left: 128px
+      max-width: 760px
+      flex-direction: row
+      align-items: center
+      order: 1
+
+  &__based,
+  &__email
+    margin-bottom: 35px
+    display: flex
+    align-items: center
+    color: #000
+    font-size: 22px
+    word-break: break-all
+    text-decoration: none
+    +mq($extrasmall)
+      font-size: 18px
+    +mq($xsmall)
+      +font-size(24px)
+      white-space: nowrap
+    +mq($medium)
+      +font-size(24px)
+
+    +mq($large)
+      margin-bottom: 0
+      flex-direction: row
+      font-size: 16px
+
+
+  &__based
+    +margin-right(45px)
+
+
+  &__based-icon,
+  &__email-icon
+    +margin-right(16px)
+    display: flex
+    align-items: center
+    color: #8B2AFF
+
+  &__based-icon
+    width: 32px
+    height: 36px
+    +mq($large)
+      width: 22px
+      height: 24px
+
+  &__email-icon
+    margin-right: 20px
+    width: 32px
+    height: 24px
+    +mq($large)
+      +margin-right(16px)
+      width: 24px
+      height: 18px
+
+  &__social
+    margin-top: 10px
+    color: #8B2BFF
+    order: 1
+    +mq($large)
+      margin-top: 0
+      order: 2

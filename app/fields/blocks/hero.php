@@ -6,8 +6,11 @@
         Block::make( __( 'Hero block' ) )
             ->add_fields([
                 Field::make( 'image', 'hero_image', __( 'Image' ) ),
+                Field::make( 'text', 'hero_title', __( 'Title' ) ),
                 Field::make( 'textarea', 'hero_text', __( 'Text' ) )
-                    ->set_rows( 2 )
+                    ->set_rows( 2 ),
+                Field::make( 'text', 'hero_video', __( 'Video link' ) ),
+
             ])
 
             ->set_category( 'custom', __( 'Custom blocks' ), 'admin-page' )

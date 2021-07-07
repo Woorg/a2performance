@@ -11,9 +11,10 @@
 
     <nav class="header__nav nav nav_primary">
       <button class="nav__trigger">
-        <span class="nav__trigger-line"></span>
-        <span class="nav__trigger-line"></span>
-        <span class="nav__trigger-line"></span>
+        <svg class="nav__trigger-icon" width="32px" height="15px">
+          <use xlink:href="{{ svg_path() }}svg-symbols.svg#menu-icon"></use>
+        </svg>
+        <span class="nav__trigger-close"></span>
       </button>
 
         {!! wp_nav_menu([
@@ -23,6 +24,9 @@
         ]) !!}
 
     </nav>
+
+    <a href="#feedback" class="header__contact button">Contact</a>
+
   </div>
 </header>
 

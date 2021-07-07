@@ -2,36 +2,107 @@
 
 @section('content')
 
+
 @php
-  $project_subtitle = carbon_get_post_meta( get_the_ID(),'project_subtitle' );
-  $project_gallery = carbon_get_post_meta( get_the_ID(),'project_gallery' );
+  $category_id   = get_cat_ID( 'News' );
+  $category_link = get_category_link( $category_id );
+
 @endphp
 
-<section class="projects projects_single">
-  <div class="projects__container container">
+<div class="page__back back">
+  <a href="{!! $category_link !!}" class="back__link">
+    <svg class="back__icon" width="36px" height="35px">
+      <use xlink:href="{{ svg_path() }}svg-symbols.svg#back-icon"></use>
+    </svg>
+    Back
+  </a>
+</div>
 
-    <div class="projects__top">
-      {{-- <h1 class="projects__title title title_secondary ">{{ the_title() }}</h1> --}}
-      <p class="projects__subtitle">{{ $project_subtitle }}</p>
-    </div>
 
-    <div class="projects__grid">
-      @foreach ($project_gallery as $image)
-        <article class="projects__project">
-          <a class="projects__link" href="{{ wp_get_attachment_image_url( $image, 'full' ) }}">
-            <div class="projects__image">
-              {!! wp_get_attachment_image( $image, 'full' ) !!}
-            </div>
-          </a>
-        </article>
-      @endforeach
-    </div>
+<div class="page__content content">
 
-    <a class="projects__more button button_secondary" href='{{ site_url('/projects') }}'>Больше проектов</a>
+  @while ( have_posts() ) @php the_post(); @endphp
+
+    @include('partials.content-single' )
+
+  @endwhile
+
+</div>
+
+<aside class="page__sidebar sidebar">
+  <div class="sidebar__block">
+    <h2 class="sidebar__title">Other news</h2>
+
+    @php
+      $query = new WP_Query([
+        'post_type'      => 'post',
+        'posts_per_page' => 3,
+        'post__not_in'   => [ get_the_ID() ],
+        'orderby'        => 'id',
+        'order'          => 'DESC',
+      ]);
+
+    @endphp
+
+    @if ( $query->have_posts() )
+
+    <ul class="sidebar__list">
+
+      @while ( $query->have_posts() ) @php $query->the_post(); @endphp
+
+      <li class="sidebar__list-item">
+        <svg class="sidebar__list-icon" width="20px" height="24px">
+          <use xlink:href="{{ svg_path() }}svg-symbols.svg#article-icon"></use>
+        </svg>
+        <a href="{{ the_permalink() }}" class="sidebar__link">{{ the_title() }}</a>
+      </li>
+
+      @endwhile @php wp_reset_postdata(); @endphp
+
+    </ul>
+
+    @endif
 
   </div>
-</section>
 
+
+@php
+    $instagram_url   = carbon_get_theme_option( 'instagram_url' );
+    $twitter_url     = carbon_get_theme_option( 'twitter_url' );
+    $facebook_url    = carbon_get_theme_option( 'facebook_url' );
+@endphp
+
+
+  <div class="sidebar__block">
+    <h2 class="sidebar__title">Share news</h2>
+
+    <ul class="sidebar__social social social_second">
+      <li class="social__item">
+        <a class="social__link" href="{{ esc_url($instagram_url) }}">
+        <svg class="social__icon" >
+          <use xlink:href="{{ svg_path() }}svg-symbols.svg#instagram-second-icon"></use>
+        </svg>
+        </a>
+      </li>
+      <li class="social__item">
+        <a class="social__link" href="{{ esc_url($twitter_url) }}">
+          <svg class="social__icon" >
+            <use xlink:href="{{ svg_path() }}svg-symbols.svg#twitter-icon"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="social__item">
+        <a class="social__link" href="{{ esc_url($facebook_url) }}">
+          <svg class="social__icon" >
+            <use xlink:href="{{ svg_path() }}svg-symbols.svg#fb-icon">
+            </use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</aside>
 
 
 @endsection

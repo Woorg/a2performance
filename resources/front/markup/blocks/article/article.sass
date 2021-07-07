@@ -1,0 +1,32 @@
+.article
+    color: #000000
+
+    &:last-child
+        border-bottom: none
+        margin-bottom: 0
+
+    &__title
+        margin-bottom: 15px
+        font-family: $m
+        +mq($medium)
+            margin-bottom: 44px
+        a
+            color: #000
+            // color: #8b2aff
+            text-decoration: none
+            +tr(.3s ease)
+
+            &:hover
+                color: lighten(#000, 33)
+                +tr(.3s ease)
+
+    &__text
+        color: inherit
+        font-size: 20px
+        line-height: 1.2
+
+
+    // &.article_single
+    //     margin-bottom: 75px
+    //     +mq($medium)
+    //         margin-bottom: 75px

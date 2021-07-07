@@ -1,0 +1,83 @@
+.features
+    &__container
+        position: relative
+        padding-top: 60px
+        padding-bottom: 26px
+        display: flex
+        flex-direction: column
+        +mq($medium)
+            padding-bottom: 60px
+
+
+    &__title
+        margin-bottom: 30px
+        margin-top: -190px
+        +mq($medium)
+            margin-top: 0
+
+
+    &__list
+        max-width: 418px
+
+    &__item
+        margin-bottom: 40px
+        &:last-child
+            margin-bottom: 0
+
+    &__item-title
+        margin-bottom: 17px
+        display: flex
+        align-items: center
+        +mq($medium)
+            margin-bottom: 15px
+
+
+    &__icon
+        margin-right: 5px
+
+    &__text
+        line-height: 1.3
+
+    &__video
+        z-index: 1
+        bottom: 0
+        margin-right: auto
+        margin-left: auto
+        right: 180px
+        width: 100%
+        height: 566px
+        // background: transparent url(../images/general/glitch.gif) 50% 0 no-repeat
+        // background-size: cover
+        order: -1
+        transform: translate(0 , -245px)
+
+        will-change: transform
+        +mq($extrasmall)
+            width: 280px
+        +mq($medium)
+            position: absolute
+            width: 365px
+            height: 739px
+            order: 0
+            transform: translate(0 , -72px)
+
+    &__video-img
+        object-fit: cover
+        object-position: 50%
+    &__video-link
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        &:hover
+            .features__video-icon
+                opacity: .89
+                +tr(opacity .3s ease)
+
+        &__video-icon
+            opacity: 1
+            +tr(opacity .3s ease)

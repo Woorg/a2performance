@@ -7,8 +7,9 @@ import svg4everybody from 'svg4everybody';
 // import SwupPreloadPlugin from '@swup/preload-plugin';
 // import SwupScriptsPlugin from '@swup/scripts-plugin';
 
+import storesSlider from '../../blocks/stores/stores';
+
 import Nav from '../../blocks/nav/nav';
-import Map from '../../blocks/map/map';
 
 
 (function ($) {
@@ -30,25 +31,6 @@ import Map from '../../blocks/map/map';
 
     console.log('%c developed by igor gorlov https://gorlov.gq', styles);
 
-
-    /**
-     * Swup
-     */
-
-    // const swup = new Swup({
-    //   containers: ['#swup'],
-    //   plugins: [
-    //     new SwupBodyClassPlugin(),
-    //     new SwupScrollPlugin({
-    //       animateScroll: true
-    //     }),
-
-    //     new SwupScriptsPlugin(),
-
-    //     new SwupFadeTheme(),
-    //   ]
-    // });
-
     /**
      * Scroll animation
      */
@@ -65,17 +47,37 @@ import Map from '../../blocks/map/map';
 
     const nav = new Nav()
 
-
-    /**
-     Map
+    /*
+      Stores
     */
 
-    const $mapContainer = document.querySelector('.map')
+    const gamesSlider = storesSlider();
 
-    if ( $mapContainer ) {
-      const map = Map()
 
+    function growTextarea (i,elem) {
+    var elem = $(elem);
+    var resizeTextarea = function( elem ) {
+        var scrollLeft = window.pageXOffset || (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+        var scrollTop  = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        elem.css('height', 'auto').css('height', elem.prop('scrollHeight') );
+          window.scrollTo(scrollLeft, scrollTop);
+      };
+      elem.on('input', function() {
+        resizeTextarea( $(this) );
+      });
+      resizeTextarea( $(elem) );
+  }
+
+  $('.form__textarea').each(growTextarea);
+
+
+  $('.header__contact').on('click', function(e) {
+    var _scroll = $(this).attr('href');
+    if (_scroll != '#' && $(_scroll).length) {
+      $('html, body').animate({ scrollTop: $(_scroll).offset().top - 50 }, 800);
     }
+  });
+
 
 
 })(jQuery);
