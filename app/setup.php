@@ -183,13 +183,13 @@ add_action('after_setup_theme', function () {
     // Carbon fields
     collect(glob(config('theme.dir') . '/app/fields/*.php'))
         ->map(function ($field) {
-            return require_once($field);
+            return require($field);
         });
 
 
     // Carbon blocks
     collect(glob(config('theme.dir') . '/app/fields/blocks/*.php'))
         ->map(function ($field) {
-            return require_once($field);
+            return require($field);
         });
 });

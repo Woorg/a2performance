@@ -27,22 +27,11 @@
   <div class="sidebar__block">
     <h2 class="sidebar__title">Other news</h2>
 
-    @php
-      $query = new WP_Query([
-        'post_type'      => 'post',
-        'posts_per_page' => 3,
-        'post__not_in'   => [ get_the_ID() ],
-        'orderby'        => 'id',
-        'order'          => 'DESC',
-      ]);
-
-    @endphp
-
-    @if ( $query->have_posts() )
+    @if ( $related_news->have_posts() )
 
     <ul class="sidebar__list">
 
-      @while ( $query->have_posts() ) @php $query->the_post(); @endphp
+      @while ( $related_news->have_posts() ) @php $related_news->the_post(); @endphp
 
       <li class="sidebar__list-item">
         <svg class="sidebar__list-icon" width="20px" height="24px">
@@ -59,34 +48,26 @@
 
   </div>
 
-
-@php
-    $instagram_url   = carbon_get_theme_option( 'instagram_url' );
-    $twitter_url     = carbon_get_theme_option( 'twitter_url' );
-    $facebook_url    = carbon_get_theme_option( 'facebook_url' );
-@endphp
-
-
   <div class="sidebar__block">
     <h2 class="sidebar__title">Share news</h2>
 
     <ul class="sidebar__social social social_second">
       <li class="social__item">
-        <a class="social__link" href="{{ esc_url($instagram_url) }}">
+        <a class="social__link" href="{{ esc_url( $social_links['instagram_url'] ) }}">
         <svg class="social__icon" >
           <use xlink:href="{{ svg_path() }}svg-symbols.svg#instagram-second-icon"></use>
         </svg>
         </a>
       </li>
       <li class="social__item">
-        <a class="social__link" href="{{ esc_url($twitter_url) }}">
+        <a class="social__link" href="{{ esc_url( $social_links['twitter_url'] ) }}">
           <svg class="social__icon" >
             <use xlink:href="{{ svg_path() }}svg-symbols.svg#twitter-icon"></use>
           </svg>
         </a>
       </li>
       <li class="social__item">
-        <a class="social__link" href="{{ esc_url($facebook_url) }}">
+        <a class="social__link" href="{{ esc_url( $social_links['facebook_url'] ) }}">
           <svg class="social__icon" >
             <use xlink:href="{{ svg_path() }}svg-symbols.svg#fb-icon">
             </use>

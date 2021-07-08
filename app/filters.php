@@ -13,38 +13,6 @@ add_filter('body_class', function (array $classes) {
         }
     }
 
-    if (is_single()) {
-        if (in_category(1,  get_the_ID())) {
-            $classes[] = 'post-in-cat-1';
-        }
-        if (in_category(3,  get_the_ID())) {
-            $classes[] = 'post-in-cat-3';
-        }
-        if (in_category(4,  get_the_ID())) {
-            $classes[] = 'post-in-cat-4';
-        }
-        if (in_category(5,  get_the_ID())) {
-            $classes[] = 'post-in-cat-5';
-        }
-        if (in_category(7,  get_the_ID())) {
-            $classes[] = 'post-in-cat-7';
-        }
-        if (in_category(8,  get_the_ID())) {
-            $classes[] = 'post-in-cat-8';
-        }
-        if (in_category(6,  get_the_ID())) {
-            $classes[] = 'post-in-cat-6';
-        }
-        if (in_category(9,  get_the_ID())) {
-            $classes[] = 'post-in-cat-9';
-        }
-    }
-
-
-
-
-
-
     /** Add class if sidebar is active */
     if (display_sidebar()) {
         $classes[] = 'sidebar-primary';

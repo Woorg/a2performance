@@ -12,7 +12,6 @@
 
   <div class="notfound">
       <div class="notfound__container container">
-
           <h1 class="notfound__title title title_big">404. Page not found</h1>
       </div>
   </div>
