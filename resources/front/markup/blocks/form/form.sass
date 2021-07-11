@@ -66,12 +66,14 @@
     &__input
         padding-bottom: 14px
 
+
     .form__textarea
         padding-top: 9px
         padding-bottom: 9px
-        overflow: hidden
         resize: none
+        overflow: hidden
         height: 37px
+
 
     &__submit-w
         text-align: center
@@ -115,7 +117,13 @@
             .wpcf7-response-output
                 background: #46b450
                 color: #fff
-
+                +mq($medium)
+                    position: absolute
+                    bottom: 10px
+                    left: 50%
+                    right: 0
+                    width: 50%
+                    transform: translateX(-50%)
 
         .wpcf7-not-valid-tip
             +font-size(15px)

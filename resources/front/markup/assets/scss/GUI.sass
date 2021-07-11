@@ -7,7 +7,6 @@
   +mq($medium)
     +font-size(56px)
 
-
 .title_big
   font-size: 41px
   +mq($medium)
@@ -19,9 +18,9 @@
   +mq($medium)
     +font-size(28px)
 
-
 .button
   +resetbutton()
+  position: relative
   border-image-slice: 9 9 9 9 fill
   border-image-width: 10px 10px 10px 10px
   border-image-outset: 0px 0px 0px 0px
@@ -42,11 +41,37 @@
   line-height: 1
   text-align: center
   text-decoration: none
-  +tr(opacity .3s ease)
+  +tr(.3s ease)
+
+  &:after,
+  &:before
+    z-index: -1
+    position: absolute
+    content: ''
+    top: 2px
+    right: 2px
+    bottom: 2px
+    left: 2px
+    visibility: hidden
+    opacity: 0
+    background-color: #FFF
+    +tr(.3s ease)
+
+  &:before
+    top: 4px
+    right: 1px
+    bottom: 4px
+    left: 1px
 
   &:hover
-    opacity: 0.8
-    +tr(opacity .3s ease)
+    color: #8b2bff
+    +tr(.3s ease)
+
+    &:after,
+    &:before
+      visibility: visible
+      opacity: 1
+      +tr(.3s ease)
 
 .button_secondary
   border: solid 1px #000000
@@ -57,9 +82,9 @@
 .button_submit
   height: 47px
 
+
 .screen-reader-text
   +visuallyhidden()
-
 
 .pagination
   // border-top: 2px solid #8b2aff
