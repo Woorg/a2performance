@@ -1,42 +1,48 @@
+
+@if ($hero_slider)
 <section class="hero">
-  <div class="hero__container container" >
-    <div class="hero__content">
-      <h1 class="hero__title">{!! $hero_title !!}</h1>
-      <div class="hero__text">{!! wpautop($hero_text) !!}</div>
+  <div class="hero__slider swiper-container">
+    <div class="swiper-wrapper">
+
+    @foreach ($hero_slider as $item)
 
       @php
-        $instagram_url =  carbon_get_theme_option('instagram_url');
-        $twitter_url   =  carbon_get_theme_option('twitter_url');
-        $facebook_url  =  carbon_get_theme_option('facebook_url');
+        $photo = $item['photo'];
+        $title = $item['title'];
+        $text = $item['text'];
+        $button_text = $item['button_text'];
       @endphp
 
-      <ul class="hero__social social">
-        <li class="social__item">
-          <a class="social__link" href="{{ esc_url($instagram_url) }}">
-            <svg class="social__icon" width="40px" height="40px">
-              <use xlink:href="{{ svg_path() }}svg-symbols.svg#instagram-icon"></use>
-            </svg>
-          </a>
-        </li>
-        <li class="social__item">
-          <a class="social__link" href="{{ esc_url($twitter_url) }}">
-            <svg class="social__icon" width="40px" height="41px">
-              <use xlink:href="{{ svg_path() }}svg-symbols.svg#twitter-icon"></use>
-            </svg>
-          </a>
-        </li>
-        <li class="social__item">
-          <a class="social__link" href="{{ esc_url($facebook_url) }}">
-            <svg class="social__icon" width="40px" height="41px">
-              <use xlink:href="{{ svg_path() }}svg-symbols.svg#fb-icon">
-              </use>
-            </svg>
-          </a>
-        </li>
-      </ul>
+      <div class="hero__slide swiper-slide">
 
+        {!! wp_get_attachment_image($photo, 'full', null, ['class' => 'hero__image']) !!}
 
+        <div class="hero__container container">
+
+          <div class="hero__content">
+
+            @if ($title)
+            <h1 class="hero__title title">{{ $title }}</h1>
+            @endif
+
+            @if ($text)
+            <div class="hero__text">{!! $text !!}</div>
+            @endif
+
+            @if ($button_text)
+            <a class="hero__button open-popup button" href="#sign-up-w-discount">{!! $button_text !!}</a>
+            @endif
+
+          </div>
+        </div>
+      </div>
+    @endforeach
 
     </div>
+    <div class="hero__pagination swiper-pagination flex"></div>
+
   </div>
 </section>
+@endif
+
+

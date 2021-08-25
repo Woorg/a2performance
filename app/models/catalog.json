@@ -1,0 +1,75 @@
+{
+  "active": true,
+  "type": "cpt",
+  "name": "Catalog",
+  "supports": [
+    "title", 
+    "editor", 
+    "comments", 
+    "revisions", 
+    "trackbacks", 
+    "author", 
+    "excerpt", 
+    "page-attributes", 
+    "thumbnail", 
+    "custom-fields", 
+    "post-formats"
+  ],
+  "labels": {
+    "has_one": "Каталог",
+    "has_many": "Каталог",
+    "text_domain": "sage",
+    "overrides": {
+      "name": "Каталог",
+      "singular_name": "Каталог",
+      "menu_name": "Каталог",
+      "name_admin_bar": "Каталог",
+      "add_new": "Add New",
+      "add_new_item": "Add New Item",
+      "edit_item": "Edit Item",
+      "new_item": "New Item",
+      "view_item": "View Item",
+      "view_items": "View Items",
+      "search_items": "Search Items",
+      "not_found": "No books found.",
+      "not_found_in_trash": "No Items found in Trash.",
+      "parent_item-colon": "Parent Items:",
+      "all_items": "All Items",
+      "archives": "Item Archives",
+      "attributes": "Item Attributes",
+      "insert_into_item": "Insert into Item",
+      "uploaded_to_this_item": "Uploaded to this Item",
+      "featured_image": "Featured Image",
+      "set_featured_image": "Set featured image",
+      "remove_featured_image": "Remove featured image",
+      "use_featured_image": "Use featured image",
+      "filter_items_list": "Filter Items list",
+      "items_list_navigation": "Items list navigation",
+      "items_list": "Items list"
+    }
+  },
+  "config": {
+    "public": true,
+    "publicly_queryable": true,
+    "show_ui": true,
+    "show_in_menu": true,
+    "show_in_nav_menus": true,
+    "show_in_rest": true,
+    "query_var": true,
+    "has_archive": true,
+    "hierarchical": true,
+    "menu_position": null,
+    "menu_icon": "dashicons-car",
+    "can_export": true,
+    "capability_type": "post",
+    "map_meta_cap": true,
+    "taxonomies": [
+    ],
+    "rewrite": {
+      "slug": "catalog",
+      "with_front": true,
+      "feeds": true,
+      "pages": true
+    }
+  }
+}

@@ -1,49 +1,80 @@
 .header
+  position: fixed
   z-index: 2
-  // position: relative
-  position: absolute
   top: 0
   left: 0
-  // right: 0
-  width: 100%
-  +tr(.3s linear)
+  right: 0
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 9%, rgba(0, 0, 0, 0.05) 19%, rgba(0, 0, 0, 0.12) 28%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.29) 48%, rgba(0, 0, 0, 0.39) 57%, rgba(0, 0, 0, 0.5) 66%, rgba(0, 0, 0, 0.61) 74%, rgba(0, 0, 0, 0.71) 81%, rgba(0, 0, 0, 0.8) 88%, rgba(0, 0, 0, 0.88) 93%, rgba(0, 0, 0, 0.95) 97%, rgba(0, 0, 0, 0.98) 99%, rgba(0, 0, 0, 1) 100%), linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 9%, rgba(0, 0, 0, 0.05) 19%, rgba(0, 0, 0, 0.12) 28%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.29) 48%, rgba(0, 0, 0, 0.39) 57%, rgba(0, 0, 0, 0.5) 66%, rgba(0, 0, 0, 0.61) 74%, rgba(0, 0, 0, 0.71) 81%, rgba(0, 0, 0, 0.8) 88%, rgba(0, 0, 0, 0.88) 93%, rgba(0, 0, 0, 0.95) 97%, rgba(0, 0, 0, 0.98) 99%, rgba(0, 0, 0, 1) 100%)
+  +mq($small)
+    background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 9%, rgba(0, 0, 0, 0.05) 19%, rgba(0, 0, 0, 0.12) 28%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.29) 48%, rgba(0, 0, 0, 0.39) 57%, rgba(0, 0, 0, 0.5) 66%, rgba(0, 0, 0, 0.61) 74%, rgba(0, 0, 0, 0.71) 81%, rgba(0, 0, 0, 0.8) 88%, rgba(0, 0, 0, 0.88) 93%, rgba(0, 0, 0, 0.95) 97%, rgba(0, 0, 0, 0.98) 99%, rgba(0, 0, 0, 1) 100%)
 
   &__container
-    padding-top: 0
-    padding-bottom: 15px
-    min-height: 56px
-    display: flex
-    justify-content: flex-start
+    min-width: 129px
     align-items: center
-    // flex-wrap: wrap
-    +mq($medium)
-      padding-top: 19px
-
+    flex-wrap: wrap
+    +mq($large)
+      flex-wrap: nowrap
+      min-height: 72px
 
   &__logo
-    position: relative
-    top: 15px
-    margin-right: 0
-    max-width: 112px
-    +mq($medium)
-      margin-left: 6px
-      max-width: 97px
-
+    padding-top: 24px
+    padding-bottom: 24px
+    order: 0
+    +mq($small)
+      margin-right: 30px
+      order: 0
 
   &__nav
-    position: relative
-    top: 10px
-    margin-left: auto
-    +mq($medium)
-      margin-left: 0
+    position: absolute
+    top: 30px
+    right: 15px
+    // margin-left: auto
+    order: 2
+    order: 1
     +mq($large)
-      max-width: 100%
+      position: static
+      // margin-left: 32px
 
-  &__contact
+
+  &__contacts
+    position: relative
+    z-index: 1
+    margin-right: 40px
+    margin-left: 0
+
     margin-left: auto
-    display: none
-    +mq($medium)
-      display: flex
+    padding-top: 20px
+    padding-bottom: 24px
 
+    width: 100%
+    max-width: 120px
+    justify-content: flex-end
+    justify-content: flex-start
+    align-items: center
+    flex-wrap: wrap
+    flex-wrap: nowrap
+    order: 0
+    // display: none
+    // +mq($medium)
+    //   display: flex
+    +mq($small)
+      margin-right: 40px
+      order: 2
+      max-width: 170px
+    +mq($large)
+      padding-top: 24px
+      max-width: 190px
+      margin-right: 0
 
+    //   white-space: nowrap
 
+  // &__social
+
+  &__phone
+    // margin-top: 10px
+    width: 100%
+    justify-content: flex-end
+    +mq($large)
+      margin-top: 0
+      margin-left: 24px
+      justify-content: flex-start

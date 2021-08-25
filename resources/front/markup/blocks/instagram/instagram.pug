@@ -1,0 +1,15 @@
+mixin instagram(data)
+    section.instagram
+        .instagram__container.container
+            .instagram__top
+                h2.instagram__title
+
+                != pugHelpers.Icon.call(locals, {iconName: 'inst-icon', className: 'instagram__icon'})
+
+
+            .instagram__text
+
+            .instagram__list
+                figure.instagram__item
+                    a.instagram__link(href="#")
+                        img(src="asets/images/content/photo.jpg", alt="")

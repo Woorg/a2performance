@@ -1,26 +1,40 @@
 mixin hero(data)
-  .hero
-    .hero__container.container
-      .hero__content
+    section.hero&attributes(attributes)
+        .hero__slider.swiper-container
+            .swiper-wrapper
+                .hero__slide.swiper-slide
+                    img.hero__image.lazy(data-src="assets/images/content/slider-img-1.jpg", alt="")
+
+                    .hero__container.container
+                        .hero__content
+                            h1.hero__title.title Прошивки для <br/>повышения мощности
+                            .hero__text
+                                p Магазин авторских прошивок для Lexus и Toyota
+
+                            a.hero__button.open-popup.button(href="#sign-up-w-discount") Записаться на чип тюнинг
+                                span со скидкой 5%
+
+                .hero__slide.swiper-slide
+                    img.hero__image.lazy(data-src="assets/images/content/slider-img-1.jpg", alt="")
+
+                    .hero__container.container
+                        .hero__content
+                            h1.hero__title.title Прошивки для <br/>повышения мощности
+                            .hero__text
+                                p Магазин авторских прошивок для Lexus и Toyota
 
 
-        ul.hero__social.social
-          li.social__item
-            a.social__link(href="#")
-              != pugHelpers.Icon.call(locals, {iconName: 'instagram-icon', className: 'social__icon'})
-          li.social__item
-            a.social__link(href="#")
-              != pugHelpers.Icon.call(locals, {iconName: 'twitter-icon', className: 'social__icon'})
-          li.social__item
-            a.social__link(href="#")
-              != pugHelpers.Icon.call(locals, {iconName: 'fb-icon', className: 'social__icon'})
+                .hero__slide.swiper-slide
+                    img.hero__image.lazy(data-src="assets/images/content/slider-img-1.jpg", alt="")
 
-        .hero__text
+                    .hero__container.container
+                        .hero__content
+                            h1.hero__title.title Прошивки для <br/>повышения мощности
+                            .hero__text
+                                p Магазин авторских прошивок для Lexus и Toyota
 
-        .hero__video
-           a.hero__video-link(href="#")
-            != pugHelpers.Icon.call(locals, {iconName: 'play-icon', className: 'hero__video-icon'})
+                            a.hero__button.open-popup.button(href="#sign-up-w-discount") Записаться на чип тюнинг
+                                span со скидкой 5%
 
 
-
-
+            .hero__pagination.swiper-pagination.flex

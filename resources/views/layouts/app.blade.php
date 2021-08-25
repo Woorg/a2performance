@@ -1,22 +1,20 @@
 <!doctype html>
-<html {{ language_attributes() }}>
+<html {!! get_language_attributes() !!}>
   @include('partials.head')
-  <body id="top" @php body_class('page') @endphp>
+  <body @php body_class('page') @endphp>
     @php do_action('get_header') @endphp
 
-    <div class="page__inner">
-      @include('partials.header')
-      <main class="page__main main">
-        @yield('content')
-      </main>
+    @include('partials.header')
 
-    </div>
+    <main class="page__inner">
+      @yield('content')
+    </main>
 
     @php do_action('get_footer') @endphp
+
     @include('partials.footer')
 
     @php wp_footer() @endphp
-
 
   </body>
 </html>

@@ -1,27 +1,177 @@
-<section id="feedback" class="feedback">
 
-  <picture class="feedback__bg">
-    <source type="image/png" srcset="{{ images_path() }}/general/feedback-bg-mob.png 1x, {{ images_path() }}/general/feedback-bg-mob@2x.png 2x" media="(max-width: 800px) " />
-    <source type="image/webp" srcset="{{ images_path() }}/general/feedback-bg-mob.webp 1x, {{ images_path() }}/general/feedback-bg-mob@2x.webp 2x" media="(max-width: 800px)" />
+@php
+
+  $title            = $title;
+  $is_separate_page = $full;
+  $is_white_theme   = $light_theme;
+
+  $fullClass        = ( $full == 1 ) ? ' feedback feedback_full ' : ' feedback ';
+  $class_white      = ( $light_theme == 1 ) ? ' feedback feedback_full feedback_t_white ' : ' feedback ';
+
+  // $text             = get_field( 'text' );
+
+  // $attention_title  = get_field( 'attention_title' );
+  // $attention_text   = get_field( 'attention_text' );
+  // $text_2           = get_field( 'text_2' );
+
+@endphp
+
+@if ($is_separate_page && !$is_white_theme)
+<section class="{{ $fullClass }}">
+@endif
+@if ($is_white_theme)
+<section class="{{ $class_white }}">
+@endif
+@if (!$is_separate_page)
+<section class="feedback">
+@endif
 
 
-    <source type="image/png" srcset="{{ images_path() }}/general/feedback-bg.png 1x, {{ images_path() }}/general/feedback-bg@2x.png 2x" />
+  <div class="feedback__in container">
+    @if ($title)
+      <h2 class="feedback__title title">{{ $title }}</h2>
+    @endif
 
-    <source type="image/webp" srcset="{{ images_path() }}/general/feedback-bg.webp 1x, {{ images_path() }}/general/feedback-bg@2x.webp 2x" />
+    @if ($text)
+    <div class="feedback__text text">
+      {!! $text !!}
+    </div>
+    @endif
 
-    <img src="{{ images_path() }}/general/feedback-bg.png" srcset="{{ images_path() }}/general/feedback-bg.png 1x, {{ images_path() }}/general/feedback-bg@2x.png 2x" alt="" />
-  </picture>
+    @if ($attention_title)
+    <div class="feedback__attention">
+      <div class="feedback__attention-title">{{ $attention_title }}</div>
+      <div class="feedback__attention-text">{{ $attention_text }}</div>
+    </div>
+    @endif
+
+    @if ($text_2)
+    <div class="feedback__text text">
+      {!! $text_2 !!}
+    </div>
+    @endif
 
 
-  <div class="feedback__container container">
-    <h2 class="feedback__title title">{{ $title }}</h2>
+    @if (!$is_separate_page)
+    <svg class="feedback__bg" width="176px" height="149px">
+      <use xlink:href="{{ svg_path() }}/svg-symbols.svg#quote-icon"></use>
+    </svg>
+    @endif
 
-    <div class="feedback__form form">
-      {!! do_shortcode($form_shortcode) !!}
+    @if (!$is_white_theme)
+
+    <div class="feedback__slider swiper-container">
+      <div class="feedback__slider-wrapper swiper-wrapper">
+
+    @php
+      $args = [
+        'no_found_rows'  => true,
+        'post_type'      => 'feedback',
+        // 'cat'            => 22,
+        'posts_per_page' => 500,
+        'order' => 'ASC',
+        'orderby' => 'date'
+      ];
+
+      $q = new WP_Query( $args );
+
+    @endphp
+
+    @if ( $q->have_posts() )
+      @while ($q->have_posts()) @php $q->the_post() @endphp
+        @php
+          $link = carbon_get_the_post_meta('feedback_link');
+          $name = carbon_get_the_post_meta('feedback_name');
+          $auto = carbon_get_the_post_meta('feedback_car');
+
+        @endphp
+        <div class="feedback__slide swiper-slide">
+          <div class="feedback__slide-in">
+            <div class="feedback__body">
+              <div class="feedback__body-title">{{ the_title() }}</div>
+              <div class="feedback__body-text">{{ the_content() }}</div>
+
+              @if ($link)
+                <a class="feedback__link flex" href="{{ $link }}">Читать далее
+                  <svg class="feedback__icon" width="12px" height="12px">
+                      <use xlink:href="{{ svg_path() }}/svg-symbols.svg#vk-icon"></use>
+                  </svg>
+                </a>
+              @endif
+
+            </div>
+            <div class="feedback__author-w flex">
+              <div class="feedback__author flex">
+                <div class="feedback__avatar">
+                  {!! get_the_post_thumbnail(get_the_ID(), 'thumb', ['class'=> 'feedback__avatar-img']) !!}
+                </div>
+                <div class="feedback__author-content">
+                  <div class="feedback__author-name">{{ $name }}</div>
+                  <div class="feedback__author-model">{{ $auto }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      @endwhile
+    @endif
+
+    @php
+      wp_reset_postdata()
+    @endphp
+
+      </div>
+      <div class="feedback__pagination swiper-pagination flex"></div>
     </div>
 
+    @endif
+    {{-- ! white theme
+
+  @if ($is_white_theme )
+
+    @php
+      $args = [
+        'no_found_rows'  => true,
+        'post_type'      => 'feedbacks',
+        'cat'            => 23,
+        'posts_per_page' => 500,
+        'order' => 'ASC',
+        'orderby' => 'date'
+      ];
+
+      $q = new WP_Query( $args );
+
+    @endphp
+
+    @if ( $q->have_posts() )
+      @while ($q->have_posts()) @php $q->the_post() @endphp
+        @php
+          $link = get_field('link', get_the_ID());
+        @endphp
+      <div class="feedback__forum-list">
+
+        <article class="feedback__forum-item">
+          <div class="feedback__forum-in">
+            <div class="feedback__forum-top flex">
+              <div class="feedback__forum-model">{{ the_title() }}</div><a class="feedback__forum-link" href="{{ $link }}" target="_blank">Читать отзыв</a>
+            </div>
+            <a class="feedback__image" href="{{ the_post_thumbnail_url('full') }}">
+              {{ the_post_thumbnail('full') }}
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      @endwhile
+    @endif
+
+    @php
+      wp_reset_postdata()
+    @endphp
+
+  @endif
+
   </div>
-</section>
-
-
-
+</section> --}}

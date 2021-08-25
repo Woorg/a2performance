@@ -6,7 +6,9 @@
         Block::make( __( 'Feedback block' ) )
             ->add_fields( array(
                 Field::make( 'text', 'title', 'Title' ),
-                Field::make( 'text', 'form_shortcode', 'Form shortcode' )
+                Field::make( 'checkbox', 'full', 'Separate page' ),
+                Field::make( 'checkbox', 'light_theme', 'Light theme' ),
+
             ))
 
             ->set_category( 'custom', __( 'Custom blocks' ), 'admin-page' )
@@ -15,7 +17,7 @@
             ->set_inner_blocks_position( 'below' )
 
             ->set_render_callback( function ( $arg ) {
-                 return get_block_template('feedback', $arg);
+                 return a2_get_block_template('feedback', $arg);
             });
 
     });

@@ -9,14 +9,14 @@ use Carbon_Fields\Field;
 add_action('carbon_fields_register_fields', function () {
     Container::make('theme_options', __('Theme Options', 'sage'))
         ->add_fields(array(
-            Field::make( 'image', 'logo_image', __( 'Logo image' ) ),
-            Field::make( 'image', 'logo_image_text', __( 'Logo image 2' ) ),
 
             Field::make( 'text', 'instagram_url', __( 'Instagram URL' ) ),
-            Field::make( 'text', 'twitter_url', __( 'Twitter URL' ) ),
-            Field::make( 'text', 'facebook_url', __( 'Facebook URL' )),
-            Field::make( 'text', 'basedin', __( 'Based in' )),
+            // Field::make( 'text', 'instagram_token', __( 'Instagram access token' ) ),
+
             Field::make( 'text', 'email', __( 'Email' )),
+            Field::make( 'text', 'phone', __( 'Phone' )),
+            Field::make( 'text', 'copyright', __( 'Copyright' )),
+
 
         ));
 

@@ -1,216 +1,194 @@
+.flex
+  display: flex
+
 .title
-  color: #4d4d4d
-  font-family: $m
-  font-size: 32px
-  font-weight: 400
-  line-height: normal
+  font-weight: 800
+  font-size: 30px
+  line-height: 1.1666666667
   +mq($medium)
-    +font-size(56px)
+    font-size: 48px
+
 
 .title_big
-  font-size: 41px
-  +mq($medium)
-    +font-size(72px)
+  font-size: 25px
+  font-weight: 800
+  line-height: 1.35
+  +mq($small)
+    font-size: 40px
 
-.title_secondary
-  color: #8b2bff
-  font-size: 24px
-  +mq($medium)
-    +font-size(28px)
 
 .button
   +resetbutton()
-  position: relative
-  border-image-slice: 9 9 9 9 fill
-  border-image-width: 10px 10px 10px 10px
-  border-image-outset: 0px 0px 0px 0px
-  border-image-repeat: round round
-  border-image-source: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTczIiBoZWlnaHQ9IjQ3IiB2aWV3Qm94PSIwIDAgMTczIDQ3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB4PSI0IiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjQiIHk9IjQ1IiB3aWR0aD0iMTY1IiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjIiIHk9IjQiIHdpZHRoPSIzOSIgaGVpZ2h0PSIyIiB0cmFuc2Zvcm09InJvdGF0ZSg5MCAyIDQpIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB3aWR0aD0iMzkiIGhlaWdodD0iMiIgdHJhbnNmb3JtPSJtYXRyaXgoNC4zNzExNGUtMDggMSAxIC00LjM3MTE0ZS0wOCAxNzEgNCkiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjIiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHRyYW5zZm9ybT0ibWF0cml4KC0xIDAgMCAxIDE3MSAyKSIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iMiIgeT0iNDMiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHRyYW5zZm9ybT0ibWF0cml4KC0xIDAgMCAxIDE3MSA0MykiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=")
-
-  padding-right: 58px
-  padding-left: 58px
-  height: 46px
-
-  display: inline-flex
-  justify-content: center
-  align-items: center
+  padding-top: 8px
+  padding-right: 16px
+  padding-bottom: 8px
+  padding-left: 16px
+  display: inline-block
+  vertical-align: top
+  height: 62px
+  background-color: #e51515
   color: #fff
-  opacity: 1
-  +font-size(16px)
-  font-weight: normal
-  line-height: 1
+  font-size: 16px
+  font-weight: 700
+  line-height: 1.5
   text-align: center
   text-decoration: none
-  +tr(.3s ease)
-
-  &:after,
-  &:before
-    z-index: -1
-    position: absolute
-    content: ''
-    top: 2px
-    right: 2px
-    bottom: 2px
-    left: 2px
-    visibility: hidden
-    opacity: 0
-    background-color: #FFF
-    +tr(.3s ease)
-
-  &:before
-    top: 4px
-    right: 1px
-    bottom: 4px
-    left: 1px
+  border-radius: 8px
+  +tr(background-color .3s linear)
+  +mq($small)
+    height: 70px
+    font-size: 20px
+  span
+    display: block
+    color: #ffffff
+    font-size: 14px
+    font-weight: 700
+    line-height: 1.5
+    text-align: center
+    +mq($small)
+      font-size: 16px
 
   &:hover
-    color: #8b2bff
-    +tr(.3s ease)
+    background-color: darken(#e51515, 10)
+    +tr(background-color .3s linear)
 
-    &:after,
-    &:before
-      visibility: visible
-      opacity: 1
-      +tr(.3s ease)
 
-.button_secondary
-  border: solid 1px #000000
-  padding-right: 38px
-  padding-left: 38px
+.button_reg
+  height: 46px
+  color: #ffffff
+  font-size: 16px
+  line-height: 1
+
+
+.button_more
+  border: 1px solid #FFFFFF
+  padding-top: 16px
+  padding-bottom: 16px
+  display: inline-flex
+  align-items: center
+  background: transparent
+  color: #ffffff
+  &:hover
+    background-color: transparent
+
+  .button__icon
+    margin-left: 16px
+
+.link
+  margin-bottom: 30px
+  padding-top: 16px
+  padding-right: 16px
+  padding-bottom: 16px
+  padding-left: 16px
+  display: inline-block
+  vertical-align: top
+  align-items: center
   background-color: #ffffff
-
-.button_submit
-  height: 47px
-
-
-.screen-reader-text
-  +visuallyhidden()
-
-.pagination
-  // border-top: 2px solid #8b2aff
-  padding-top: 25px
-
-  .page-numbers
-    margin-right: 15px
-    color: #8b2aff
-
-    &:last-child
-      margin-right: 0
-
-    &.current
-      color: #000
-
-    &.next
-      +visuallyhidden()
-
-.text
-  color: #000000
+  color: #e51515
   font-size: 18px
-  font-weight: 400
-  line-height: 1.3
-  +mq($medium)
-    +font-size(20px)
+  font-weight: 600
+  line-height: 1.633
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
-    font-family: $m
+  text-decoration: none
+  border-radius: 10px
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.08)
+  +tr(.3s linear)
+  +mq($small)
+    font-size: 24px
 
 
-  h1
-    margin-top: 44px
-    margin-bottom: 50px
-    font-size: 45px
-    +mq($medium)
-      +font-size(72px)
+  &:hover
+    color: darken(#e51515, 10)
+    box-shadow: none
+    +tr(.3s linear)
+    .benefits__link-icon
+      color: darken(#e51515, 10)
+      animation: bounceRight 1s infinite
+      +tr(.3s linear)
 
 
-  h2
-    margin-top: 29px
-    margin-bottom: 35px
-    font-size: 33px
-    +mq($medium)
-      margin-bottom: 27px
-      +font-size(40px)
 
-  h3
-    margin-top: 54px
-    margin-bottom: 23px
-    font-size: 26px
-    +mq($medium)
-      +font-size(24px)
+.bg-dark
+  background-color: #22232b
+
+.mfp-bg
+  background-color: #000000
+  opacity: 0.4
 
 
-  p
-    margin-top: 17px
-    margin-bottom: 27px
-    font-size: 18px
-    font-weight: 400
-    line-height: 1.19
-    +mq($medium)
-      +font-size(20px)
 
-    &:last-of-type
-        margin-bottom: 0
+.vid
+  position: relative
+  height: 0
+  padding-top: 56.25%
+  overflow: hidden
+  border-radius: 0 0 8px 8px
+  +mq($large)
+      border-radius: 8px
 
-  em
-    font-style: italic
-
-
-  ul
-    font-size: 16px
-    +mq($medium)
-      max-width: 600px
-      +font-size(16px)
-    li
-      position: relative
-      margin-bottom: 24px
-      padding-left: 18px
-      &:after
-        position: absolute
-        top: 6px
-        left: 0
-        content: ''
-        width: 6px
-        height: 6px
-        background-color: #8b2aff
-      &:last-child
-        margin-bottom: 0
-
-
-  .wp-block-image
-    position: relative
-    margin-top: 24px
-    margin-bottom: 22px
-    padding-top: 3px
-    padding-right: 3px
-    padding-bottom: 3px
-    padding-left: 3px
-    display: inline-flex
-    min-height: 330px
-    font-size: 0
-    overflow: hidden
-    +mq($medium)
-      min-height: auto
-
-    &:after
+  &__object
+    iframe
       position: absolute
       top: 0
-      left: 0
       right: 0
       bottom: 0
-      content: ''
-      border-image-slice: 13 13 13 13 fill
-      border-image-width: 10px 10px 10px 10px
-      border-image-outset: 0px 0px 0px 0px
-      border-image-repeat: round round
-      border-image-source: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUyIiBoZWlnaHQ9IjMyNSIgdmlld0JveD0iMCAwIDc1MiAzMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjQiIHk9IjciIHdpZHRoPSIzMTAiIGhlaWdodD0iMy45OTk5OCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNCA3KSIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSI3NTIiIHk9IjciIHdpZHRoPSIzMTAiIGhlaWdodD0iMy45OTk5OCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNzUyIDcpIiBmaWxsPSIjOEIyQUZGIi8+CjxyZWN0IHg9IjgiIHdpZHRoPSI3MzYiIGhlaWdodD0iNCIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSI4IiB5PSIzMjEiIHdpZHRoPSI3MzYiIGhlaWdodD0iNCIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB4PSIzLjkyMTg4IiB5PSIzLjkyMTg4IiB3aWR0aD0iMy45MjE5MSIgaGVpZ2h0PSIzLjkyMTkxIiBmaWxsPSIjOEIyQUZGIi8+CjxyZWN0IHg9Ijc0NC4zOTciIHk9IjMxNy4xNTYiIHdpZHRoPSIzLjkyMTkxIiBoZWlnaHQ9IjMuOTIxOTEiIGZpbGw9IiM4QjJBRkYiLz4KPHBhdGggZD0iTTMuOTIxODggMzE3LjE1Nkg3Ljg0Mzc4VjMyMS4wNzhIMy45MjE4OFYzMTcuMTU2WiIgZmlsbD0iIzhCMkFGRiIvPgo8cmVjdCB3aWR0aD0iMy45MjE5MSIgaGVpZ2h0PSIzLjkyMTkxIiB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSA3NDQuMzk3IDcuODQzNzUpIiBmaWxsPSIjOEIyQUZGIi8+Cjwvc3ZnPgo=")
-
-    img
-      object-fit: cover
+      left: 0
+      width: 100%
       height: 100%
-      +mq($medium)
-        height: auto
+
+.text
+  p
+    margin-bottom: (48px / 2)
+    +mq($small)
+      margin-bottom: 48px
+      font-size: 18px
+    // &:last-of-type
+    //     margin-bottom: 0
+  a
+
+    color: #e51515
+    font-size: 14px
+    font-weight: 500
+    font-style: normal
+    letter-spacing: normal
+    line-height: 1
+    text-transform: uppercase
+    text-decoration: none
+    +tr(.3s linear)
+    +mq($small)
+      font-size: 18px
+
+
+    &:hover
+        color: darken(#e51515, 10)
+        +tr(.3s linear)
+
+
+@keyframes bounceLeft
+  0%,
+  20%,
+  50%,
+  80%,
+  100%
+    transform: translateX(0)
+
+  40%
+    transform: translateX(10px)
+
+  60%
+    transform: translateX(5px)
+
+
+@keyframes bounceRight
+  0%,
+  20%,
+  50%,
+  80%,
+  100%
+    transform: translateX(0)
+
+  40%
+    transform: translateX(-10px)
+
+  60%
+    transform: translateX(-5px)

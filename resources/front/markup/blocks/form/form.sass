@@ -1,130 +1,108 @@
 .form
+  &__field
+    margin-bottom: 26px
     width: 100%
-    form
-        display: flex
-        flex-grow: 1
-        flex-wrap: wrap
-        +mq($medium)
-            flex-wrap: nowrap
+    display: flex
+    flex-wrap: wrap
+    .wpcf7-form-control-wrap
+      width: 100%
 
-    &__field
-        margin-bottom: 32px
-        width: 100%
-        display: flex
-        flex-grow: 1
-        flex-shrink: 1
+  &__field_select
+    position: relative
+    flex-grow: 1
 
-        +mq($medium)
-            margin-bottom: 0
-            margin-right: 30px
-            width: auto
+    .form__select-arrow
+      position: absolute
+      top: calc(50% + 14px)
+      right: 12px
+      width: 14px
+      height: 7px
+      pointer-events: none
+      background: url('../images/general/dropdown-arrow.svg') 0 0 no-repeat
+      background-size: cover
+      transform: translateY(-50%)
 
-        &:last-child
-            margin-bottom: 0
+  &__label
+    display: flex
+    flex-wrap: wrap
+    flex-grow: 1
 
-        .wpcf7-form-control-wrap
-            flex-grow: 1
+  &__label-text
+    margin-bottom: 10px
+    color: #6d7885
+    font-family: $sf
+    font-size: 16px
+    font-weight: 400
+    font-style: normal
+    letter-spacing: -0.15px
+    line-height: 1.125
+    text-align: left
 
-    // &__field_submit
-    //     width: 100%
-    //     text-align: center
-    //     +mq($medium)
-    //         width: auto
+  &__input,
+  &__select,
+  &__message
+    +resetbutton
+    padding-right: 12px
+    padding-left: 12px
+    width: 100%
+    height: 44px
+    border-radius: 10px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    background-color: #f2f3f5
 
-    &__input,
-    &__textarea
-        +resetbutton()
-        border-bottom: 2px solid #fff
-        padding-right: 20px
-        padding-left: 20px
-        background-color: transparent
-        width: 100%
-        height: 42px
-        flex-grow: 1
-        color: rgba(255,255,255,.7)
-        font-family: $r
-        +font-size(16px)
-        font-weight: 400
-        // line-height: 24px
-        line-height: 1.5
-        text-align: center
-        +placeholder()
-            color: rgba(255,255,255,.7)
-            font-family: $r
-            +font-size(16px)
-            font-weight: 400
-            // line-height: 24px
-            line-height: 1.5
-            text-align: center
+    +placeholder()
+      color: rgba(0,0,0,.4)
+      font-size: 16px
+      font-weight: 400
+      letter-spacing: -0.32px
 
-        .wpcf7-not-valid
-            border: 1px solid red
+  &__select
+    appearance: none
 
-        .wpcf7-valid
-            border: 1px solid green
+  &__select[disabled]
+      color: rgba(0,0,0,.4)
+      font-size: 16px
+      font-weight: 400
+      letter-spacing: -0.32px
 
-    &__input
-        padding-bottom: 14px
+  &__message
+    padding-top: 14px
+    padding-bottom: 17px
+    min-height: 125px
+    line-height: 1.56
 
+  &__submit-w
+    position: relative
+    flex-direction: column
+    align-items: flex-start
 
-    .form__textarea
-        padding-top: 9px
-        padding-bottom: 9px
-        resize: none
-        overflow: hidden
-        height: 37px
+    .ajax-loader
+      position: absolute
+      top: 100%
+      left: 50%
+      transform: translateX(-50%)
 
+  &__submit
+    // margin-top: 10px
+    flex-grow: 1
+    text-align: center
+    order: 4
 
-    &__submit-w
-        text-align: center
+.wpcf7
+  form.invalid,
+  form.failed,
+  form.sent
+    .wpcf7-response-output
+      border: none
+      background: darken(#E51515, 10)
+      // background: #ffb900
+      color: #fff
+      border-radius: 8px
 
-    &__submit
-        margin-right: auto
-        margin-left: auto
-        width: 100%
-        +mq($medium)
-            max-width: 270px
+  form.sent
+    .wpcf7-response-output
+      border: none
+      background: #46b450
 
-
-    .wpcf7
-        .ajax-loader
-            position: absolute
-            bottom: 5px
-            left: 50%
-            margin-top: 10px
-            margin-right: auto
-            margin-left: auto
-            display: block
-            transform: translateX(-50%)
-            // +mq($medium)
-
-
-    .wpcf7
-
-        .wpcf7-not-valid-tip
-            position: absolute
-            bottom: -20px
-            left: 0
-            +mq($medium)
-                bottom: -30px
-
-
-        form.invalid
-            .wpcf7-response-output
-                display: none
-
-        form.sent
-            .wpcf7-response-output
-                background: #46b450
-                color: #fff
-                +mq($medium)
-                    position: absolute
-                    bottom: 10px
-                    left: 50%
-                    right: 0
-                    width: 50%
-                    transform: translateX(-50%)
-
-        .wpcf7-not-valid-tip
-            +font-size(15px)
-
+  .wpcf7-not-valid-tip
+    font-size: 12px

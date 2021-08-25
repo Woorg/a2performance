@@ -8,6 +8,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "fast-average-color": "^6.3.0",
+    "instafeed.js": "^2.0.0-rc3",
     "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
     "magnific-popup": "^1.1.0",

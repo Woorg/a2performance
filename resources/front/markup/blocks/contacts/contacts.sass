@@ -1,0 +1,44 @@
+.contacts
+    overflow: hidden
+    &__container
+        padding-bottom: 56px
+
+    &__title
+        margin-bottom: 50px
+
+    &__text
+        p
+            margin-bottom: (48px / 2)
+            +mq($small)
+                margin-bottom: 48px
+            // &:last-of-type
+            //     margin-bottom: 0
+        a
+
+            color: #e51515
+            font-size: 18px
+            font-weight: 500
+            font-style: normal
+            letter-spacing: normal
+            line-height: 1
+            text-transform: lowercase
+            text-decoration: none
+            +tr(.3s ease)
+
+            &:hover
+                color: darken(#e51515, 10)
+                +tr(.3s ease)
+
+                strong
+                    color: lighten(rgba(24, 25, 31, 1), 10)
+                    +tr(.3s ease)
+
+            strong
+                color: rgba(24, 25, 31, 1)
+                font-weight: bold
+                +tr(.3s ease)
+
+
+    &__form
+        width: 100%
+        max-width: 520px

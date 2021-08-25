@@ -95,7 +95,7 @@ Container::getInstance()
 // Templates for gutenberg blocks
 
 
-function get_block_template($template, $args)
+function a2_get_block_template($template, $args)
 {
     $template = App\locate_template([$template . ".blade.php", 'resources/views/blocks/' . $template . '.blade.php']);
 
@@ -117,9 +117,9 @@ function get_block_template($template, $args)
     Add attributes to script tags
  */
 
-add_filter('script_loader_tag', 'chickenfish_script_loader_tag', 10, 2);
+add_filter('script_loader_tag', 'a2_script_loader_tag', 10, 2);
 
-function chickenfish_script_loader_tag($tag, $handle)
+function a2_script_loader_tag($tag, $handle)
 {
 
     // Добавляем атрибут async к зарегистрированному скрипту.
@@ -201,27 +201,27 @@ function fix_svg_mime_type($data, $file, $filename, $mimes, $real_mime = '')
     Change nav item class
  */
 
-function chickenfish_add_additional_class_on_li($classes, $item, $args)
+function a2_add_additional_class_on_li($classes, $item, $args)
 {
     $classes[] = 'nav__item';
     return $classes;
 }
 
-add_filter('nav_menu_css_class', 'chickenfish_add_additional_class_on_li', 1, 3);
+add_filter('nav_menu_css_class', 'a2_add_additional_class_on_li', 1, 3);
 
 
 /**
     Change nav link class
  */
 
-function chickenfish_filter_nav_menu_link_attributes($atts, $item, $args, $depth)
+function a2_filter_nav_menu_link_attributes($atts, $item, $args, $depth)
 {
 
     $atts['class'] = 'nav__link';
     return $atts;
 }
 
-add_filter('nav_menu_link_attributes', 'chickenfish_filter_nav_menu_link_attributes', 10, 4);
+add_filter('nav_menu_link_attributes', 'a2_filter_nav_menu_link_attributes', 10, 4);
 
 
 /**
@@ -269,7 +269,7 @@ function random()
 
 function app_path()
 {
-    $app_path = get_theme_root_uri() . '/chickenfish/app';
+    $app_path = get_theme_root_uri() . '/a2/app';
     return $app_path;
 }
 

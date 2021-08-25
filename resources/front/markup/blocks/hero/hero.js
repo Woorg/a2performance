@@ -1,31 +1,49 @@
-function Parallax () {
+import Swiper, {Pagination, Navigation, Controller, EffectFade, Lazy, Scrollbar, Thumbs, Autoplay} from 'swiper'
 
-  // let background = document.querySelector(".hero__image");
-  // let person = document.querySelector(".person");
-  // let mountain = document.querySelector(".hero__bg");
-  // let smoke1 = document.querySelector(".smoke1");
-  // let smoke2 = document.querySelector(".smoke2");
-  let text = document.querySelector(".hero__image");
-  // let cover = document.querySelector(".cover");
-  // let header = document.querySelector("header");
+Swiper.use([Pagination, Navigation, Controller, EffectFade, Lazy, Scrollbar, Thumbs, Autoplay])
 
-  const scrollHandle = (e) => {
-    let scroll = window.scrollY;
+function heroSlider () {
 
-    text.style.transform = `translate(-50%, -50%) translate3d(0, ${
-      scroll * 0.55
-    }px, 0)`;
-    // background.style.transform = `translate3d(0, ${scroll * 0.9}px, 0)`;
-    // mountain.style.transform = `translate3d(0, ${scroll * 0.35}px, 0)`;
-    // smoke1.style.transform = `translate3d(0, ${scroll * 0.7}px, 0)`;
-    // smoke2.style.transform = `translate3d(0, ${scroll * 0.3}px, 0)`;
-    // person.style.transform = `translate3d(0, ${scroll * 0.25}px, 0)`;
-  };
+    let $heroSlider = document.querySelector('.hero__slider');
 
-  window.addEventListener("scroll", scrollHandle);
+    if ($heroSlider) {
+        const $heroSwiper = new Swiper('.hero__slider', {
+            direction: 'horizontal',
+            loop: true,
+            // effect: 'fade',
+            // fadeEffect: {
+            //     crossFade: true,
+            // },
+            autoplay: {
+                delay: 8000,
+            },
 
+            // navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            // },
+
+            pagination: {
+                el: '.hero__pagination',
+                type: 'bullets',
+                clickable: true,
+            },
+
+            breakpoints: {
+                0: {
+
+                },
+
+                800: {
+
+                }
+            }
+
+        })
+
+    }
 }
 
-// 0.85
 
-export default Parallax
+export default heroSlider
+

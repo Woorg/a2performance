@@ -1,20 +1,19 @@
+include ../logo/logo.pug
+include ../nav/nav.pug
+include ../phone/phone.pug
+include ../social/social.pug
+
 mixin header(data)
-  header.header&attributes(attributes)
-    .header__container.container
-      .header__logo.logo
+    header.header&attributes(attributes)
+        .header__container.container.flex
 
+            a.header__logo.logo(href="#")
+                != pugHelpers.Icon.call(locals, {iconName: 'logo', className: 'logo__icon'})
 
-      nav.header__nav.nav.nav_primary
-        button.nav__trigger
-          != pugHelpers.Icon.call(locals, {iconName: 'menu-icon', className: 'customClass'})
-        .nav__list-w
+            +nav().header__nav
 
-          ul.nav__list
-            li.nav__item.nav__item_current
-              a.nav__link(href="#") Главная
-            li.nav__item
-              a.nav__link(href="#") Проекты
-            li.nav__item
-              a.nav__link(href="#") О нас
-            li.nav__item
-              a.nav__link(href="#") Контакты
+            .header__contacts.flex
+
+                +social().header__social
+
+                +phone().header__phone

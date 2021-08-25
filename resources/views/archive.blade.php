@@ -1,82 +1,133 @@
-@extends('layouts.app-inner')
+@extends('layouts.app')
 
 @section('content')
+  <section class="catalog catalog_w_filter">
+    <div class="catalog__in container">
+
+      <div class="catalog__top flex">
+        <h1 class="catalog__title title ">Каталог</h1>
+        <div class="filter catalog__filter  flex">
+          <div class="filter__field filter__field_1">
+            {!! do_shortcode( '[facetwp facet="car_brand"]' ) !!}
+          </div>
+          <div class="filter__field filter__field_2">
+            {!! do_shortcode( '[facetwp facet="model"]' ) !!}
+          </div>
+          <div class="filter__field filter__field_3">
+            {!! do_shortcode( '[facetwp facet="capacity"]' ) !!}
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog__list facetwp-template flex">
+        @while(have_posts()) @php the_post() @endphp
+          @php
+            $brands        = get_the_terms(get_the_ID(), 'car-brand');
+            $feedback_link = get_field('feedback_link');
+          @endphp
+
+          <article class="catalog__card card">
+            <div class="card__in">
+              <div class="card__image">
+                <a href="{{ the_permalink() }}" class="card__link"></a>
+                {{ the_post_thumbnail() }}
+
+                <a class="card__feedback" href="{{ $feedback_link }}">Отзыв клиента</a>
+              </div>
+
+              <div class="card__body">
+                <div class="card__model flex">
+                  @foreach( $brands as $brand )
+                    <svg class="card__logo" width="90px" height="16px">
+                      <use xlink:href="{{ svg_sprite_paths() }}#{{ $brand->slug }}-logo"></use>
+                    </svg>
+                  @endforeach
+                  <div class="card__model-name">{{ the_title() }}</div>
+                </div>
+
+                @if (have_rows( 'tech', get_the_ID() ))
+
+                  <dl class="card__list">
+
+                    @while (have_rows( 'tech' , get_the_ID() )) @php the_row(); @endphp
+
+                      <div class="card__list-item">
+                        <dt class="card__term">{{ the_sub_field( 'term' ) }}<span>{{ the_sub_field( 'desc' ) }}</span></dt>
+
+                        @if (have_rows( 'specs', get_the_ID() ))
+                          <dd class="card__desc flex">
+                            @while (have_rows( 'specs', get_the_ID() )) @php the_row(); @endphp
+                              @php
+                                $from = get_sub_field( 'from' );
+                                $to   = get_sub_field( 'to' );
+                              @endphp
+
+                              <div class="card__from">{{ $from }}</div>
+                              <div class="card__arrow">→</div>
+                              <div class="card__to">{{ $to }}</div>
+                            @endwhile
+                          </dd>
+                        @endif
 
 
-<section class="page__content content">
+                      </div>
 
-  <h1 class="content__title title">{{ post_type_archive_title() }}</h1>
+                    @endwhile
 
-  <div class="content__list">
+                  </dl>
 
-    @while ( have_posts() ) @php the_post(); @endphp
+                @endif
 
-      @include('partials.content-archive' )
+                <a class="card__price flex" href="{{ the_permalink() }}">Цены и графики
+                  <svg class="card__price-icon" width="8px" height="12px">
+                    <use xlink:href="{{ svg_sprite_paths() }}#price-arrow"></use>
+                  </svg>
+                </a>
 
-    @endwhile
+              </div>
 
-  </div>
+            </div>
+          </article>
+        @endwhile
 
-  <div class="content__pagination">
-    {{ the_posts_pagination() }}
-  </div>
 
-</section>
+      </div>
+      <div class="catalog__load-w flex">
+        {!! do_shortcode( '[facetwp facet="load_more"]' ) !!}
+        {{-- <button class="catalog__load-more fwp-load-more button">Загрузить еще</button> --}}
+      </div>
 
-<aside class="page__sidebar sidebar">
-  <div class="sidebar__block">
-    <h2 class="sidebar__title">Other news</h2>
+    </div>
+  </section>
 
-    @if ( $related_news->have_posts() )
+@php
 
-    <ul class="sidebar__list">
+  $trust_title = get_field( 'trust_title', 'options' );
+@endphp
 
-      @while ( $related_news->have_posts() ) @php $related_news->the_post(); @endphp
+  <section class="trusted">
+    <div class="trusted__in container">
+      @if ($trust_title)
+        <h2 class="trusted__title title">Отзывы с drive2.ru</h2>
+      @endif
 
-      <li class="sidebar__list-item">
-        <svg class="sidebar__list-icon" width="20px" height="24px">
-          <use xlink:href="{{ svg_path() }}svg-symbols.svg#article-icon"></use>
-        </svg>
-        <a href="{{ the_permalink() }}" class="sidebar__link">{{ the_title() }}</a>
-      </li>
-
-      @endwhile @php wp_reset_postdata(); @endphp
-
-    </ul>
-
-    @endif
-
-  </div>
-
-  <div class="sidebar__block">
-    <h2 class="sidebar__title">Share news</h2>
-
-    <ul class="sidebar__social social social_second">
-      <li class="social__item">
-        <a class="social__link" href="{{ esc_url( $social_links['instagram_url'] ) }}">
-        <svg class="social__icon" >
-          <use xlink:href="{{ svg_path() }}svg-symbols.svg#instagram-second-icon"></use>
-        </svg>
-        </a>
-      </li>
-      <li class="social__item">
-        <a class="social__link" href="{{ esc_url( $social_links['twitter_url'] ) }}">
-          <svg class="social__icon" >
-            <use xlink:href="{{ svg_path() }}svg-symbols.svg#twitter-icon"></use>
-          </svg>
-        </a>
-      </li>
-      <li class="social__item">
-        <a class="social__link" href="{{ esc_url( $social_links['facebook_url'] ) }}">
-          <svg class="social__icon" >
-            <use xlink:href="{{ svg_path() }}svg-symbols.svg#fb-icon">
-            </use>
-          </svg>
-        </a>
-      </li>
-    </ul>
-
-  </div>
-</aside>
-
+      @if ( have_rows( 'trust_list', 'option' ) )
+        <div class="trusted__grid flex">
+          @while (have_rows( 'trust_list', 'option' )) @php the_row(); @endphp
+            @php
+              $trust_image = get_sub_field( 'trust_image' );
+            @endphp
+            <article class="trusted__item">
+              <div class="trusted__item-in">
+                <a class="trusted__object" href="{{ wp_get_attachment_image_url( $trust_image, 'full' )}}">
+                    {!! wp_get_attachment_image($trust_image, 'medium') !!}
+                </a>
+              </div>
+            </article>
+          @endwhile
+        </div>
+      @endif
+    </div>
+  </section>
 @endsection
+

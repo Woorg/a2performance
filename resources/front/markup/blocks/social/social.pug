@@ -1,2 +1,5 @@
 mixin social(data)
-    .social
+    ul.social.flex&attributes(attributes)
+        li.social__item
+            a.social__link(href="#")
+                != pugHelpers.Icon.call(locals, {iconName: 'inst-icon', className: 'social__icon'})

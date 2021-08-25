@@ -24,7 +24,7 @@
             ->set_inner_blocks_position( 'below' )
 
             ->set_render_callback( function ( $arg ) {
-                 return get_block_template('stores', $arg);
+                 return a2_get_block_template('stores', $arg);
             });
 
     });

@@ -1,0 +1,13 @@
+mixin advantages(data)
+
+    section.advantages
+        .advantages__container
+            h2.advantages__title.title
+            ul.advantages__list
+                li.advantages__item
+                    .advantages__image
+                    .advantages__item-title
+                    .advantages__text
+
+            a.advantages__more(href="#") adf
+                != pugHelpers.Icon.call(locals, {iconName: 'button-arrow', className: 'advantages__more-icon' })
